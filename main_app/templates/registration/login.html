@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class='container'>
+    <h5 class='center-align teal-text text-darken-3'>Welcome to State Trivia!</h5>
+
+    <!-- Add the login form -->
+    <form method="post" class='sign-up' action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class='center'>
+    <button type='submit' class='btn-large teal darken-3'>Log In</button>
+    </div>
+    <input type="hidden" name="next" value="{{ next }}">
+    </form>
+</div>
+
+{% endblock content %}
