@@ -1,0 +1,17 @@
+.svg-green{
+    fill: #00695c
+}
+
+footer {
+  position: absolute !important;
+  right: 0;bottom:0;left:0 !important;
+  padding: 10px !important;
+}
+
+.sign-up label {
+  color: #00695c;
+  font-size: medium;
+}
+html{
+    color: #00695c !important;
+}
