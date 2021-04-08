@@ -1,7 +1,38 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<h1>GAME MODE</h1>
-<script src="{% static 'js/game_capitals.js' %}"></script>
+    <br>
+    <div class='container'>
+        <img class='image-green' src="{% static 'images/FontStates/'|add:current_state.name|add:' State.svg' %}" alt="">
+    </div>
+    <br>
+    <div class='container center'>
+        {% if AnswerArray.0 == current_state.capital %}
+        <a class='btn teal darken-3' href=" {% url 'game_capitals' next_state %} ">{{current_state.capital}}</a>
+        {% else %}
+        <a class='btn teal darken-3' href="{% url 'game_capitals_incorrect' current_state.id %}">{{AnswerArray.0}}</a>
+        {% endif %}
+    </div>
+    <br>
+    <div class='container center'>
+        {% if AnswerArray.1 == current_state.capital %}
+        <a class='btn teal darken-3' href=" {% url 'game_capitals' next_state %} ">{{current_state.capital}}</a>
+        {% else %}
+        <a class='btn teal darken-3' href="{% url 'game_capitals_incorrect' current_state.id %}">{{AnswerArray.1}}</a>
+        {% endif %}
+    </div>
+    <br>
+    <div class='container center'>    
+        {% if AnswerArray.2 == current_state.capital %}
+        <a class='btn teal darken-3' href=" {% url 'game_capitals' next_state %} ">{{current_state.capital}}</a>
+        {% else %}
+        <a class='btn teal darken-3' href="{% url 'game_capitals_incorrect' current_state.id %}">{{AnswerArray.2}}</a>
+        {% endif %}
+    </div>
+    <br>
+    <div class="progress container">
+      <div class="determinate" style="width:{{progress}}%"></div>
+  </div>
+
 {% endblock content %}
 

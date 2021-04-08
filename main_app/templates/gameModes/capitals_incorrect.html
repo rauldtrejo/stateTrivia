@@ -1,0 +1,20 @@
+{% extends 'base_incorrect.html' %}
+{% load static %}
+
+{% block content %}
+    <br>
+    <div class='container'>
+        <img class='image-red' src="{% static 'images/FontStates/'|add:current_state.name|add:' State.svg' %}" alt="">
+    </div>
+    <br>
+    <h5 class='center-align red-text text-darken-4'>That's Incorrect! </h5>
+    <h5 class='center-align red-text text-darken-4'>The Correct Answer is:</h5>
+    <br>
+    <div class='container center'>
+        <p class='btn red darken-4'>{{current_state.capital}}</p>
+    </div>
+    <br>
+    <div class='container center'>
+        <a href=" {% url 'game_capitals' next_state %} " class='btn red darken-4'>Next!</a>
+    </div>
+{% endblock content %}
