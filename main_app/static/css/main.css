@@ -1,5 +1,11 @@
-.svg-green{
-    fill: #00695c
+.image-green{
+ 
+  filter: invert(17%) sepia(99%) saturate(3057%) hue-rotate(165deg) brightness(85%) contrast(102%);
+}
+
+.image-red{
+  max-width: 100%;
+  filter: invert(14%) sepia(69%) saturate(4081%) hue-rotate(350deg) brightness(102%) contrast(95%);
 }
 
 footer {
