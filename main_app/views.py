@@ -3,13 +3,19 @@ from main_app.models import State
 from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
-from .models import State
+from .models import Progress, State
 from random import shuffle
 
 # Create your views here.
 
 def home(request):
-  return render(request, 'landingPage.html')
+  user_progress, created = Progress.objects.get_or_create(
+  user = request.user,
+  game_mode = 'capitals',
+  defaults={'current_state': 0, 'incorrect':0}
+  )
+  user_left_off = user_progress.current_state + user_progress.incorrect + 1
+  return render(request, 'landingPage.html', {'user_left_off': user_left_off})
 
 def signup(request):
   error_message = ''
@@ -32,6 +38,7 @@ def signup(request):
 
 
 def game_capitals(request, state_id):
+  user_progress = Progress.objects.get(user = request.user, game_mode = 'capitals')
   if(state_id <= 50):
     all_states = State.objects.all()
     current_state = State.objects.get(id=state_id)
@@ -57,22 +64,65 @@ def game_capitals(request, state_id):
       'current_state': current_state,
       'next_state': next_state,
       'AnswerArray': AnswerArray,
-      'progress': progress
+      'progress': progress,
+      'user_progress': user_progress
     }
-    print(context)
     return render (request, 'gameModes/capitals.html', context)
   else:
+    user_progress.current_state = 0
+    user_progress.incorrect = 0
+    user_progress.save()
     return redirect('home')
 
 
 
 def game_capitals_incorrect(request, state_id):
+  user_progress = Progress.objects.get(user = request.user, game_mode = 'capitals')
   current_state = State.objects.get(id=state_id)
   next_state = current_state.id + 1
+  progress = (current_state.id/50)*100
   context = {
     'current_state': current_state,
     'next_state': next_state,
+    'progress': progress,
+    'user_progress': user_progress
   }
   return render (request, 'gameModes/capitals_incorrect.html', context)
 
+
+def game_capitals_correct(request, state_id):
+  user_progress = Progress.objects.get(user = request.user, game_mode = 'capitals')
+  current_state = State.objects.get(id=state_id)
+  next_state = current_state.id + 1
+  progress = (current_state.id/50)*100
+  context = {
+    'current_state': current_state,
+    'next_state': next_state,
+    'progress': progress,
+    'user_progress': user_progress
+  }
+  return render (request, 'gameModes/capitals_correct.html', context)
+
+
+def game_capitals_correct_answer(request, state_id):
+  user_progress, created = Progress.objects.get_or_create(
+  user = request.user,
+  game_mode = 'capitals',
+  defaults={'current_state': 0, 'incorrect':0}
+  )
+  user_progress.current_state += 1
+  user_progress.save()
+
+  return redirect('game_capitals_correct', state_id=state_id)
+
+def game_capitals_incorrect_answer(request, state_id):
+  user_progress, created = Progress.objects.get_or_create(
+  user = request.user,
+  game_mode = 'capitals',
+  defaults={'current_state': 0, 'incorrect':0}
+  )
+  user_progress.incorrect += 1
+  user_progress.save()
+
+  return redirect('game_capitals_incorrect', state_id=state_id)
 
