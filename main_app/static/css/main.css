@@ -8,6 +8,10 @@
   filter: invert(14%) sepia(69%) saturate(4081%) hue-rotate(350deg) brightness(102%) contrast(95%);
 }
 
+.red-outline{
+  color:#b71c1c !important;
+}
+
 footer {
   position: absolute !important;
   right: 0;bottom:0;left:0 !important;
