@@ -12,10 +12,10 @@
 
     {% if user.is_authenticated %}
     <div class='center'>
-        <a class='btn teal darken-3' href="{% url 'game_capitals' user_left_off %}">Know The Capital?</a>
+        <a class='btn teal darken-3' href="{% url 'game_capitals' user_left_off_capitals %}">Know The Capital?</a>
     </div>
     <div class='center'>
-        <a class='btn teal darken-3' href="">Know The Motto?</a>
+        <a class='btn teal darken-3' href="{% url 'game_mottos' user_left_off_mottos %}">Know The Motto?</a>
     </div>
     <div class='center'>
         <a class='btn teal darken-3' href="">EXTREME MODE</a>
