@@ -29,7 +29,7 @@ class Score(models.Model):
 class Progress(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     game_mode = models.CharField(max_length=25)
-    current_state = models.IntegerField()
+    correct = models.IntegerField()
     incorrect = models.IntegerField()
 
     def __str__(self):
