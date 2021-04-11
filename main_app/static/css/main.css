@@ -1,5 +1,5 @@
 .image-green{
- 
+  max-width: 100%;
   filter: invert(17%) sepia(99%) saturate(3057%) hue-rotate(165deg) brightness(85%) contrast(102%);
 }
 
@@ -12,10 +12,12 @@
   color:#b71c1c !important;
 }
 
-footer {
-  position: absolute !important;
-  right: 0;bottom:0;left:0 !important;
-  padding: 10px !important;
+.green-outline{
+  color: #00695c !important;
+}
+
+.btn-75{
+  width: 75% !important;
 }
 
 .sign-up label {
@@ -23,5 +25,20 @@ footer {
   font-size: medium;
 }
 html{
-    color: #00695c !important;
+    color: grey !important;
+}
+
+footer{
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
