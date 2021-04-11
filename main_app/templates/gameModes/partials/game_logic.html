@@ -1,0 +1,26 @@
+{% extends 'gameModes/partials/base_capitals_mottos.html' %}
+{% block game_logic %}
+    <div class='container center'>
+        {% if AnswerArray.0 == current_state.capital or AnswerArray.0 == current_state.motto %}
+            <a class='btn btn-75 teal darken-3' href="{% block correctUrl1 %}{% endblock correctUrl1 %}">{% block answer1 %}{% endblock answer1 %}</a>
+        {% else %}
+            <a class='btn btn-75 teal darken-3' href="{% block incorrectUrl1 %}{% endblock incorrectUrl1 %}">{{AnswerArray.0}}</a> 
+        {% endif %}
+    </div>
+    <br>
+    <div class='container center'>
+        {% if AnswerArray.1 == current_state.capital or AnswerArray.1 == current_state.motto  %}
+            <a class='btn btn-75 teal darken-3' href="{% block correctUrl2 %}{% endblock correctUrl2 %}">{% block answer2%}{% endblock answer2%}</a>
+        {% else %}
+            <a class='btn btn-75 teal darken-3' href="{% block incorrectUrl2 %}{% endblock incorrectUrl2 %}">{{AnswerArray.1}}</a>
+        {% endif %}
+    </div>
+    <br>
+    <div class='container center'>    
+        {% if AnswerArray.2 == current_state.capital or AnswerArray.2 == current_state.motto  %}
+            <a class='btn btn-75 teal darken-3' href="{% block correctUrl3 %}{% endblock correctUrl3 %}">{% block answer3 %}{% endblock answer3 %}</a>
+        {% else %}
+            <a class='btn btn-75 teal darken-3' href="{% block incorrectUrl3 %}{% endblock incorrectUrl3 %}">{{AnswerArray.2}}</a>
+        {% endif %}
+    </div>
+{% endblock game_logic %}

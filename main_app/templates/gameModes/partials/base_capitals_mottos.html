@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class='container'>
+    <br>
+    <br>
+    <div class='container'>
+        <img class='image-green' src="{% static 'images/FontStates/'|add:current_state.name|add:' State.svg' %}" alt="">
+    </div>
+    <br>
+    <div class='container row'>
+        <div class='col s4 offset-s2'>
+            <h5 class='teal-text text-darken-4 valign-wrapper'><i class="material-icons green-outline">check_box</i> = {{user_progress.correct}}</h5>
+        </div>
+        <div class='col s4 offset-s1'>
+            <h5 class='red-text text-darken-3 valign-wrapper center-align'><i class="material-icons red-outline">cancel</i> = {{user_progress.incorrect}}</h5>
+        </div>
+    </div>
+    <br>
+
+    {% block game_logic %}
+    {% endblock game_logic %}
+    
+    {% block user_answered_correct %}
+    {% endblock user_answered_correct %}
+    <br>
+    <br>
+    <div class="progress container">
+      <div class="determinate" style="width:{{progress}}%"></div>
+    </div>
+    <br>
+</div>
+{% endblock content %}
