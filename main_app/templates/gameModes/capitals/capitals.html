@@ -1,49 +1,13 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block content %}
-    <br>
-    <br>
-    <div class='container'>
-        <img class='image-green' src="{% static 'images/FontStates/'|add:current_state.name|add:' State.svg' %}" alt="">
-    </div>
-    <br>
-    <div class='container center row'>
-        <div class='col s4 offset-s2'>
-            <h5><i class="material-icons">check_box</i> = {{user_progress.correct}}</h5>
-        </div>
-        <div class='col s4'>
-            <h5 class='red-text text-darken-3'><i class="material-icons red-outline">cancel</i> = {{user_progress.incorrect}}</h5>
-        </div>
-    </div>
-    <br>
-    <div class='container center'>
-        {% if AnswerArray.0 == current_state.capital %}
-        <a class='btn teal darken-3' href=" {% url 'game_capitals_correct_answer' current_state.id %} ">{{current_state.capital}}</a>
-        {% else %}
-        <a class='btn teal darken-3' href="{% url 'game_capitals_incorrect_answer' current_state.id %}">{{AnswerArray.0}}</a>
-        {% endif %}
-    </div>
-    <br>
-    <div class='container center'>
-        {% if AnswerArray.1 == current_state.capital %}
-        <a class='btn teal darken-3' href=" {% url 'game_capitals_correct_answer' current_state.id %} ">{{current_state.capital}}</a>
-        {% else %}
-        <a class='btn teal darken-3' href="{% url 'game_capitals_incorrect_answer' current_state.id %}">{{AnswerArray.1}}</a>
-        {% endif %}
-    </div>
-    <br>
-    <div class='container center'>    
-        {% if AnswerArray.2 == current_state.capital %}
-        <a class='btn teal darken-3' href=" {% url 'game_capitals_correct_answer' current_state.id %} ">{{current_state.capital}}</a>
-        {% else %}
-        <a class='btn teal darken-3' href="{% url 'game_capitals_incorrect_answer' current_state.id %}">{{AnswerArray.2}}</a>
-        {% endif %}
-    </div>
-    <br>
-    <br>
-    <div class="progress container">
-      <div class="determinate" style="width:{{progress}}%"></div>
-    </div>
+{% extends 'gameModes/partials/game_logic.html' %}
+{% block correctUrl1 %}{% url 'game_capitals_correct_answer' current_state.id %}{% endblock correctUrl1 %}
+{% block incorrectUrl1 %}{% url 'game_capitals_incorrect_answer' current_state.id %}{% endblock incorrectUrl1 %}
+{% block answer1 %}{{current_state.capital}}{% endblock answer1 %}
 
-{% endblock content %}
+{% block correctUrl2 %}{% url 'game_capitals_correct_answer' current_state.id %}{% endblock correctUrl2 %}
+{% block incorrectUrl2 %}{% url 'game_capitals_incorrect_answer' current_state.id %}{% endblock incorrectUrl2 %}
+{% block answer2 %}{{current_state.capital}}{% endblock answer2 %}
+
+{% block correctUrl3 %}{% url 'game_capitals_correct_answer' current_state.id %}{% endblock correctUrl3 %}
+{% block incorrectUrl3 %}{% url 'game_capitals_incorrect_answer' current_state.id %}{% endblock incorrectUrl3 %}
+{% block answer3 %}{{current_state.capital}}{% endblock answer3 %}
 
