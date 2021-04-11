@@ -28,52 +28,51 @@
     <title>State Trivia!</title>
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="nav-wrapper red darken-4">
+                <a href="/" class="brand-logo white-text">State Trivia!</a>
+                <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+                <ul class="right hide-on-med-and-down">
 
-    <nav>
-        <div class="nav-wrapper red darken-4">
-            <a href="/" class="brand-logo white-text">State Trivia!</a>
-            <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-            <ul class="right hide-on-med-and-down">
+                    {% if user.is_authenticated %}
+                        <li><a href="/">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="">Profile</a></li>
+                        <li><a href="">High Scores</a></li>
+                        <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    {% else %}
+                        <li><a href="/">Home</a></li>
+                        <li><a href="">About</a></li>
+                        <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                        <li><a href="{% url 'login' %}">Log In</a></li>
+                    {% endif %}
+
+                </ul>
+            </div>
+        </nav>
+        <ul class="sidenav white" id="mobile-demo">
 
                 {% if user.is_authenticated %}
-                    <li><a href="/">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="">Profile</a></li>
-                    <li><a href="">High Scores</a></li>
-                    <li><a href="{% url 'logout' %}">Log Out</a></li>
+                    <li><a class='teal-text text-darken-3' href="/">Home</a></li>
+                    <li><a class='teal-text text-darken-3' href="">About</a></li>
+                    <li><a class='teal-text text-darken-3' href="">Your Profile</a></li>
+                    <li><a class='teal-text text-darken-3' href="">High Scores</a></li>
+                    <li><a class='teal-text text-darken-3' href="{% url 'logout' %}">Log Out</a></li>
                 {% else %}
-                    <li><a href="/">Home</a></li>
-                    <li><a href="">About</a></li>
-                    <li><a href="{% url 'signup' %}">Sign Up</a></li>
-                    <li><a href="{% url 'login' %}">Log In</a></li>
+                    <li><a class='teal-text text-darken-3' href="/">Home</a></li>
+                    <li><a class='teal-text text-darken-3' href="">About</a></li>
+                    <li><a class='teal-text text-darken-3' href="{% url 'signup' %}">Sign Up</a></li>
+                    <li><a class='teal-text text-darken-3' href="{% url 'login' %}">Log In</a></li>
                 {% endif %}
-
-            </ul>
-        </div>
-    </nav>
-    <ul class="sidenav white" id="mobile-demo">
-
-            {% if user.is_authenticated %}
-                <li><a class='teal-text text-darken-3' href="/">Home</a></li>
-                <li><a class='teal-text text-darken-3' href="">About</a></li>
-                <li><a class='teal-text text-darken-3' href="">Your Profile</a></li>
-                <li><a class='teal-text text-darken-3' href="">High Scores</a></li>
-                <li><a class='teal-text text-darken-3' href="{% url 'logout' %}">Log Out</a></li>
-            {% else %}
-                <li><a class='teal-text text-darken-3' href="/">Home</a></li>
-                <li><a class='teal-text text-darken-3' href="">About</a></li>
-                <li><a class='teal-text text-darken-3' href="{% url 'signup' %}">Sign Up</a></li>
-                <li><a class='teal-text text-darken-3' href="{% url 'login' %}">Log In</a></li>
-            {% endif %}
-    </ul>
-
-
-    {% block content %}
-    {% endblock %}
-    
+        </ul>
+    </header>
+    <main class='valign-wrapper'>
+        {% block content %}
+        {% endblock %}
+    </main>
     <footer class="page-footer center-align red darken-4">
         All Rights Reserved, &copy; 2021 State Trivia! &nbsp;
     </footer>
-
 </body>
 </html>
