@@ -1,0 +1,9 @@
+{% extends 'game_modes/partials/base_game_red_color.html' %}
+
+{% block user_answered_incorrect %}
+    <h5 class='center-align red-text text-darken-4'>That's Incorrect! <br>The Correct Answer is:</h5>
+    <br>
+    <div class='container center'>
+        <p class='btn btn-75 red darken-4'>{{current_state.capital}}</p>
+    </div>
+{% endblock user_answered_incorrect %}

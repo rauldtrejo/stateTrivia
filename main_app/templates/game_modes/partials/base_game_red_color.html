@@ -1,0 +1,25 @@
+{% extends 'base_red_color.html' %}
+{% load static %}
+{% block content %}
+<div class='container'>
+    <br>
+    <br>
+    <div class='container'>
+        <img class='image-red' src="{% static 'images/FontStates/'|add:current_state.name|add:' State.svg' %}" alt="">
+    </div>
+    <br>
+    {% include 'game_modes/partials/score.html' %}
+    {% block user_answered_incorrect %}
+    {% endblock user_answered_incorrect %}
+    <br>
+    <div class='container center'>
+        <a href=" {% url 'game' game_mode %} " class='btn btn-75 red darken-4'>Next!</a>
+    </div>
+    <br>
+    <br>
+    <div class="progress container red accent-1">
+      <div class="determinate red darken-4" style="width:{{progress}}%"></div>
+    </div>
+    <br>
+</div>
+{% endblock content %}

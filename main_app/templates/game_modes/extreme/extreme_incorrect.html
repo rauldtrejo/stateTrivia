@@ -1,0 +1,6 @@
+{% extends 'game_modes/partials/base_game_red_color.html' %}
+
+{% block user_answered_incorrect %}
+    <h5 class='center-align red-text text-darken-4'>That's Incorrect! <br>The Correct Answer is:</h5>
+    <h5 class="center-align red-text text-darken-4" >State: {{current_state.name}} <br>Motto: {{current_state.motto}} <br>Capital: {{current_state.capital}} </h5>
+{% endblock user_answered_incorrect %}
