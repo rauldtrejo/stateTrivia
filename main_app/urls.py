@@ -1,20 +1,16 @@
 from django.urls import path 
-from .views import game_logic, profile
+from .views import game_logic, profile, navigation, game_logic_test
 
 urlpatterns = [
-    path('', game_logic.home, name='home'),
-    path('accounts/signup', game_logic.signup, name='signup'),
-    path('game/capitals/<int:state_id>/', game_logic.game_capitals, name='game_capitals'),
-    path('game/capitals_correct/<int:state_id>', game_logic.game_capitals_correct, name='game_capitals_correct'),
-    path('game/capitals_incorrect/<int:state_id>', game_logic.game_capitals_incorrect, name='game_capitals_incorrect'),
-    path('game/capitals_correct_answer/<int:state_id>', game_logic.game_capitals_correct_answer, name='game_capitals_correct_answer'),
-    path('game/capitals_incorrect_answer/<int:state_id>', game_logic.game_capitals_incorrect_answer, name='game_capitals_incorrect_answer'),
-    path('game/mottos/<int:state_id>/', game_logic.game_mottos, name='game_mottos'),
-    path('game/mottos_correct/<int:state_id>', game_logic.game_mottos_correct, name='game_mottos_correct'),
-    path('game/mottos_incorrect/<int:state_id>', game_logic.game_mottos_incorrect, name='game_mottos_incorrect'),
-    path('game/mottos_correct_answer/<int:state_id>', game_logic.game_mottos_correct_answer, name='game_mottos_correct_answer'),
-    path('game/mottos_incorrect_answer/<int:state_id>', game_logic.game_mottos_incorrect_answer, name='game_mottos_incorrect_answer'),
-    path('game/extreme/<int:state_id>/', game_logic.game_extreme, name='game_extreme'),
+    path('', navigation.home, name='home'),
+    path('accounts/signup', navigation.signup, name='signup'),
+
+    path('game/<str:game_mode>/', game_logic_test.game, name='game'),
+    path('correct_answer/<str:game_mode>/', game_logic_test.correct_answer, name='correct_answer'),
+    path('incorrect_answer/<str:game_mode>/', game_logic_test.incorrect_answer, name='incorrect_answer'),
+    path('correct_answer_page/<str:game_mode>/', game_logic_test.correct_answer_page, name='correct_answer_page'),
+    path('incorrect_answer_page/<str:game_mode>/', game_logic_test.incorrect_answer_page, name='incorrect_answer_page'),
+
     path('game/extreme/answer/<int:state_id>/', game_logic.game_extreme_answer, name='game_extreme_answer'),
     path('game/extreme_correct/<int:state_id>/', game_logic.game_extreme_correct, name='game_extreme_correct'),
     path('game/extreme_incorrect/<int:state_id>/', game_logic.game_extreme_incorrect, name='game_extreme_incorrect'),
