@@ -1,20 +1,18 @@
 {% extends 'base.html' %}
 {% load static %}
-{% block content %}
 
+{% block content %}
 <div class='container'>
     <div class='container'>
        <img class='image-green' src=" {% static 'images/USA-States-Maps/SVG/02 US Map-01.svg' %} " alt="">
     </div>
     <h5 class='center-align teal-text text-darken-3'>Welcome to State Trivia!</h5>
     <h5 class='center-align teal-text text-darken-3'>Create a New Account</h5>
-    
     {% if error_message %}
         <p class="teal-text text-darken-3">
             {{ error_message }}
         </p>
     {% endif %}
-
     <form method="post" class='sign-up' action="{% url 'signup' %}">
         {% csrf_token %}
         {{ form.as_p }}
@@ -24,5 +22,4 @@
         <br>
     </form>
 </div>
-
 {% endblock content %}
