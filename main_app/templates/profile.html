@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='container'>
+<h4 class='teal-text text-darken-3 center'>Welcome to your profile!</h4>
+<h4 class='teal-text text-darken-3 center'>{{user.username}}</h4>
+<br>
+{% comment %} Change Username Modal  {% endcomment %}
+<div class='container center' >
+    {% comment %} Modal Trigger {% endcomment %}
+    <a class="waves-effect waves-light teal darken-3 btn btn-75 modal-trigger" href="#modal1">Change Username</a>
+    <br>
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4 class='teal-text text-darken-3'>Change Your Username</h4>
+            <form action="{% url 'edit_username' %}" method='post' class='sign-up'>
+                {% csrf_token %}
+                {{username_form.as_p}}
+                <button type='submit' class='btn teal darken-3'>Change Username</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+{% comment %} Change Password Modal {% endcomment %}
+<div class='container center' >
+    {% comment %} Modal Trigger {% endcomment %}
+    <a class="waves-effect waves-light teal darken-3 btn btn-75 modal-trigger" href="#modal2">Change Password</a>
+    <!-- Modal Structure -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <h4 class='teal-text text-darken-3'>Change Your Password</h4>
+            <form class='sign-up' action="{% url 'edit_password' %}" method='post'>
+                {% csrf_token %}
+                {{password_form.as_p}}
+                <button type='submit' class='btn teal darken-3'>Change Password</button>
+            </form>
+        </div>
+    </div>
+</div>
+<br>
+{% comment %} Delete Account Modal {% endcomment %}
+<div class='container center' >
+    {% comment %} Modal Trigger {% endcomment %}
+    <a class="waves-effect waves-light teal darken-3 btn btn-75 modal-trigger" href="#modal3">Delete Account</a>
+    <!-- Modal Structure -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <h4 class='red-text text-darken-4'>Delete Account</h4>
+            <p class='red-text text-darken-4'>WARNING <br>Are you sure you wish to delete your account? <br>This is a permanent action.</p>
+            <a class='btn red darken-4' href=" {% url 'delete_account' %} ">Delete Account</a>
+        </div>
+    </div>
+</div>
+<br>
+</div>
+{% endblock content %}
