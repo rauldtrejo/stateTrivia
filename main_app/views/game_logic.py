@@ -2,10 +2,10 @@ from main_app.models import State, Score, Progress, TotalScore
 from django.shortcuts import render, redirect
 from main_app.forms import StateForm
 from random import shuffle
-
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
-
+@login_required
 def game(request, game_mode):
     user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)
     state_id = user_progress.correct + user_progress.incorrect + 1
@@ -51,6 +51,7 @@ def game(request, game_mode):
     else:
         return redirect('game_completed', game_mode = game_mode)
 
+@login_required
 def new_game(request, game_mode):
     user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)
     user_progress.correct = 0
@@ -58,6 +59,7 @@ def new_game(request, game_mode):
     user_progress.save()
     return redirect('game', game_mode = game_mode)
 
+@login_required
 def game_completed(request, game_mode):
     user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)
     context = {
@@ -66,7 +68,7 @@ def game_completed(request, game_mode):
     }
     return render(request , 'game_modes/partials/game_completed.html', context)
 
-
+@login_required
 def correct_answer(request, game_mode):
     user_progress = Progress.objects.get(
         user = request.user,
@@ -100,7 +102,7 @@ def correct_answer(request, game_mode):
     user_total_score.save()
     return redirect('correct_answer_page', game_mode = game_mode)
 
-
+@login_required
 def correct_answer_page(request, game_mode):
     user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)
     state_id = user_progress.correct + user_progress.incorrect
@@ -121,7 +123,7 @@ def correct_answer_page(request, game_mode):
     elif(game_mode == 'extreme'):
         return render (request, 'game_modes/extreme/extreme_correct.html', context)
 
-
+@login_required
 def incorrect_answer(request, game_mode):
     user_progress = Progress.objects.get(
         user = request.user,
@@ -155,7 +157,7 @@ def incorrect_answer(request, game_mode):
     user_total_score.save()
     return redirect('incorrect_answer_page', game_mode = game_mode)
 
-
+@login_required
 def incorrect_answer_page(request, game_mode):
     user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)
     state_id = user_progress.correct + user_progress.incorrect

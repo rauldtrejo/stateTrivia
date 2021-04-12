@@ -1,10 +1,11 @@
 from main_app.models import State, Score, Progress, TotalScore
 from django.shortcuts import redirect
 from main_app.forms import StateForm
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-
+@login_required
 def answer(request, game_mode):
   user_progress = Progress.objects.get(
         user = request.user,
