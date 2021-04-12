@@ -12,6 +12,25 @@ The goal of the app is also to be a quick experience that a user can play when t
 * Python
 * Heroku (For deployment and server hosting)
 
+# Install 
+Fork and clone repo to your local computer.
+
+Open the root folder of the project in your terminal and run the following commands:
+
+```python3 -m venv .env```
+
+```source .env/bin/activate``` 
+
+```pip3 install -r requirements.txt```
+
+```createdb statetrivia```
+
+```python3 manage.py migrate```
+
+```python3 manage.py loaddata state_data.json```
+
+You should now be able to run the project locally by using the command ```python3 manage.py runserver``` and opening localhost:8000 on your browser.
+
 # User Stories:
 
 # MVP. As a user:
