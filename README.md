@@ -60,3 +60,20 @@ You should now be able to run the project locally by using the command ```python
 # Mock Up / Wireframes
 
 [Click This Link to View the Interactive Adobe XD mock up on your browser](https://xd.adobe.com/view/8433e3eb-0b53-4677-b733-88eca7fca1e5-d160/?fullscreen "Title").
+
+# Major Hurdles
+The game logic was originally intended to be written in Javascript, and it would do DOM manipulation to update page components in a similar fashion to a React app. This ended overcomplictating the code, and did not make use of Django or Pythons strengths. I opted to use a mixture of python and the Django templating language to create the game logic. 
+
+Another hurdle was the amount of views and python code that I had repeated when building the game originally, this had me go back and modularize my views and make them more abstract to be able to use them for all game types.
+
+# Major Victories
+I learned how to better user Django templates, and used their functionality to implement game logic.
+
+I was able to DRY my code substantially from the first versions, and managed to modularize many things to keep my code cleaner. Though there is still room for improvement.
+
+I was able to build my app very close to what I had orignally envisioned using Adobe XD, which made me feel accomplished that I could take a mock up and build it all by myself.
+# Future Features
+* Redesign desktop experience
+* Implement code that will shuffle the order of the states, so that every game isn't in the same order.
+* Create a game mode for State Flags and State GDPs
+* Create a quick game mode that will only ask you 10 random states instead of all 50.
