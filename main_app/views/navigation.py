@@ -21,9 +21,9 @@ def home(request):
     defaults={'correct': 0, 'incorrect':0}
     )
     context={
-      'capitals' : 'capitals',
-      'mottos': 'mottos',
-      'extreme':'extreme',
+      'user_progress_capitals': user_progress_capitals,
+      'user_progress_mottos' : user_progress_mottos,
+      'user_progress_extreme' : user_progress_extreme,
     }
     return render(request, 'landingPage.html', context)
   else:
@@ -42,22 +42,6 @@ def signup(request):
   form = UserCreationForm()
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
-
-def user_score(request, game_mode):
-    score = Score.objects.filter(user = request.user, game_mode = game_mode)
-    total_score, created = TotalScore.objects.get_or_create(
-        user = request.user,
-        game_mode = game_mode,
-        defaults={
-            'total_score':0,
-        }
-    )
-    context = {
-        'score':score,
-        'game_mode': game_mode,
-        'total_score': total_score,
-    }
-    return render(request, 'scores/user_score.html', context)
 
 
 def highscores(request):
@@ -95,4 +79,7 @@ def highscores(request):
         'top_scores_extreme': top_scores_extreme,
     }
     return render(request, 'scores/highscores.html', context)
+
+def about(request):
+    return render(request,'about.html')
 
