@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <!-- Materialize CSS -->
     <!--Import Google Icon Font-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
      <!-- Compiled and minified CSS -->
@@ -32,7 +34,7 @@
                         <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
                         <li><a href="/">Home</a></li>
-                        <li><a href="">About</a></li>
+                        <li><a href="{% url 'about' %}">About</a></li>
                         <li><a href="{% url 'signup' %}">Sign Up</a></li>
                         <li><a href="{% url 'login' %}">Log In</a></li>
                     {% endif %}
