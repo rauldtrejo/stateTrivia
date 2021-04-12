@@ -24,7 +24,10 @@ class Score(models.Model):
     total_points = models.IntegerField()
 
     def __str__(self):
-        return self.user
+        return self.user.username
+
+    class Meta:
+        ordering = ['state']
 
 class Progress(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -33,4 +36,18 @@ class Progress(models.Model):
     incorrect = models.IntegerField()
 
     def __str__(self):
-        return self.user
+        return self.user.username
+
+    class Meta:
+        ordering = ['user']
+
+class TotalScore(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE)
+    game_mode = models.CharField(max_length=25)
+    total_score = models.IntegerField()
+
+    def __str__(self):
+        return self.user.username
+
+    class Meta:
+        ordering = ['-total_score']
