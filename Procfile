@@ -1,0 +1,1 @@
+web: statetrivia_project.wsgi
