@@ -1,0 +1,59 @@
+.image-green{
+  max-width: 100%;
+  filter: invert(17%) sepia(99%) saturate(3057%) hue-rotate(165deg) brightness(85%) contrast(102%);
+}
+
+.image-red{
+  max-width: 100%;
+  filter: invert(14%) sepia(69%) saturate(4081%) hue-rotate(350deg) brightness(102%) contrast(95%);
+}
+
+.red-outline{
+  color:#b71c1c !important;
+}
+
+.green-outline{
+  color: #00695c !important;
+}
+
+.btn-75{
+  width: 75% !important;
+}
+
+.sign-up label {
+  color: #00695c;
+  font-size: medium;
+}
+
+.highscore{
+  width: 150%;
+}
+
+html{
+    color: grey !important;
+}
+
+footer{
+  padding-bottom: 5px !important;
+  padding-top: 5px !important;
+}
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+@media only screen and (max-width: 500px) {
+  .full-width {
+    width: 100vw !important;
+    position: relative;
+    left: 50% !important;
+    right: 50% !important;
+    margin-left: -50vw !important;
+    overflow-x: hidden;
+}

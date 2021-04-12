@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class='container teal-text text-darken-3 '>
+    <h4 class='center-align'>About State Trivia!</h4>
+       <img class='image-green' src=" {% static 'images/USA-States-Maps/SVG/02 US Map-01.svg' %} " alt="">
+    <p>State Trivia! Is a flashcard style quiz game that is intended to help students or anybody memorize state capitals and mottos.
+    <br>
+    <br> 
+    Based on Material Design and minimalist gameplay, this app sets out to be easy to play, intuitive, and help users memorize state capitals and mottos. 
+    <br>
+    <br>
+    The goal of the app is also to be a quick experience that a user can play when they have a couple of free minutes, making it a great companion on commutes, waiting in line, or when biological needs call.
+    </p>
+    <h4 class='center-align'>About The Developer</h4>
+    <img class='circle responsive-img' src="{% static 'images/me.jpeg' %}">
+    <h4 class='center-align'>Raul 'Daniel' Trejo</h4>
+    <div class='row'>
+        <div class='col s6 center'>
+            <a class='btn btn-75 light-blue darken-4' href="https://www.linkedin.com/in/raultrejo/">LinkedIn</a>
+        </div>
+        <div class='col s6 center'>
+            <a class='btn btn-75 grey darken-4' href="https://github.com/rauldtrejo">GitHub</a>
+        </div>
+    </div>
+    <p>
+        Migrated to the United States with only $500, a small suitcase, and a dream to break into the tech industry. As a Software Engineer I embrace my unconventional background, native Spanish-speaking fluency and bi-cultural perspective to bring new ideas to the table. My background in Aeronautical Engineering also provides me with STEM knowledge and perspectives.
+        <br>
+        <br>
+        Proud recipient of the Adobe Digital Academy scholarship, which offers career switchers the education and experience needed to launch a successful career in software engineering.
+</div>
+{% endblock content %}

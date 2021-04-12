@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class='container'>
+    <br>
+    <br>
+    <div class='container'>
+        <img class='image-green' src="{% static 'images/FontStates/'|add:current_state.name|add:' State.svg' %}" alt="">
+    </div>
+    <br>
+    {% include 'game_modes/partials/score.html' %}
+    <br>
+    {% block game_logic %}
+    {% endblock game_logic %}
+
+    {% block user_answered_correct %}
+    {% endblock user_answered_correct %}
+    <br>
+    <br>
+    <div class="progress container">
+      <div class="determinate" style="width:{{progress}}%"></div>
+    </div>
+    <br>
+</div>
+{% endblock content %}

@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class='teal-text text-darken-3 container center'>
+    <h3>High Scores:</h3>
+    <h4 class='white-text teal darken-3 full-width'>Know the Capital?</h4>
+        <table class='striped'>
+        <thead>
+        <tr>
+            <th>Rank</th>
+            <th>User</th>
+            <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for score in top_scores_capitals %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{score.user}}</td>
+                    <td>{{score.total_score}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h4 class='white-text teal darken-3 full-width'>Know the Motto?</h4>
+        <table class='striped'>
+        <thead>
+        <tr>
+            <th>Rank</th>
+            <th>User</th>
+            <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for score in top_scores_mottos %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{score.user}}</td>
+                    <td>{{score.total_score}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h4 class='white-text teal darken-3 full-width'>EXTREME MODE</h4>
+        <table class='striped'>
+        <thead>
+        <tr>
+            <th>Rank</th>
+            <th>User</th>
+            <th>Score</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for score in top_scores_extreme %}
+                <tr>
+                    <td>{{forloop.counter}}</td>
+                    <td>{{score.user}}</td>
+                    <td>{{score.total_score}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

@@ -1,4 +1,86 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<h1>Landing Page</h1>
+<div class='container'>
+    <h5 class='center-align teal-text text-darken-3'>Welcome to State Trivia!</h5>
+    <h5 class='center-align teal-text text-darken-3'>This is a learning tool <br/> that will help you memorize <br/> state capitals and mottos!</h5>
+       <img class='image-green' src=" {% static 'images/USA-States-Maps/SVG/02 US Map-01.svg' %} " alt="">
+    {% if user.is_authenticated %}
+    <h5 class='teal-text text-darken-3 center-align'>Choose a Game Mode</h5>
+    <br>
+    <div class='container center'>
+        {% if user_progress_capitals.correct > 0  or user_progress_capitals.incorrect > 0%}
+             <!-- Modal Trigger -->
+            <a class="waves-effect waves-light btn teal darken-3 btn-75 modal-trigger" href="#modal1">Know The Capital?</a>
+
+            <!-- Modal Structure -->
+            <div id="modal1" class="modal">
+                <div class="modal-content teal-text text-darken-3">
+                <h4>Resume Game?</h4>
+                <p>You previously started a game, would you like to resume it?</p>
+                </div>
+                <div class="modal-footer teal darken-3">
+                <a href="{% url 'new_game' 'capitals' %}" class="modal-close waves-effect waves-green btn-flat white-text">New Game</a>
+                <a href="{% url 'game' 'capitals' %}" class="modal-close waves-effect waves-green btn-flat white-text">Resume</a>
+                </div>
+            </div>
+        {% else %}
+        <a class='btn btn-75 teal darken-3' href="{% url 'game' 'capitals' %}">Know The Capital?</a>
+        {% endif %}
+    </div>
+    <br>
+    <div class='container center'>
+        {% if user_progress_mottos.correct > 0 or user_progress_mottos.incorrect > 0 %}
+             <!-- Modal Trigger -->
+            <a class="waves-effect waves-light btn teal darken-3 btn-75 modal-trigger" href="#modal2">Know The Motto?</a>
+
+            <!-- Modal Structure -->
+            <div id="modal2" class="modal">
+                <div class="modal-content teal-text text-darken-3">
+                <h4>Resume Game?</h4>
+                <p>You previously started a game, would you like to resume it?</p>
+                </div>
+                <div class="modal-footer teal darken-3">
+                <a href="{% url 'new_game' 'mottos' %}" class="modal-close waves-effect waves-green btn-flat white-text">New Game</a>
+                <a href="{% url 'game' 'mottos' %}" class="modal-close waves-effect waves-green btn-flat white-text">Resume</a>
+                </div>
+            </div>
+        {% else %}
+        <a class='btn btn-75 teal darken-3' href="{% url 'game' 'mottos' %}">Know The Motto?</a>
+        {% endif %}
+    </div>
+    <br>
+    <div class='container center'>
+        {% if user_progress_mottos.correct > 0 or user_progress_mottos.incorrect > 0 %}
+             <!-- Modal Trigger -->
+            <a class="waves-effect waves-light btn teal darken-3 btn-75 modal-trigger" href="#modal3">Extreme Mode</a>
+
+            <!-- Modal Structure -->
+            <div id="modal3" class="modal">
+                <div class="modal-content teal-text text-darken-3">
+                <h4>Resume Game?</h4>
+                <p>You previously started a game, would you like to resume it?</p>
+                </div>
+                <div class="modal-footer teal darken-3">
+                <a href="{% url 'new_game' 'extreme' %}" class="modal-close waves-effect waves-green btn-flat white-text">New Game</a>
+                <a href="{% url 'game' 'extreme' %}" class="modal-close waves-effect waves-green btn-flat white-text">Resume</a>
+                </div>
+            </div>
+        {% else %}
+        <a class='btn btn-75 teal darken-3' href="{%url 'game' 'extreme' %}">EXTREME MODE</a>
+        {% endif %}
+    </div>
+    <br>
+    {% else %}
+    <div class='container'>
+        <h5 class='center-align teal-text text-darken-3'>Log In or create an account <br/> to start playing!</h5>
+        <br>
+        <div class='row'>
+            <div class="col s6 center"><a class='btn btn-75 teal darken-3' href="{% url 'login' %}">Log In</a></div>
+            <div class="col s6 center"><a class='btn btn-75 teal darken-3' href="{% url 'signup' %}">Sign Up</a></div>       
+        </div>
+    </div>
+    {% endif %}
+</div>
+
 {% endblock content %}

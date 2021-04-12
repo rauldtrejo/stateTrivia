@@ -1,0 +1,11 @@
+{% extends 'game_modes/partials/base_game.html' %}
+
+{% block user_answered_correct %}
+    <h5 class='center-align teal-text text-darken-4'>That's Correct! </h5>
+    <br>
+    <div class='container center'>
+        <p class='btn btn-75 teal darken-3'>{{current_state.capital}}</p>
+    </div>
+    <br>
+    {% include 'game_modes/partials/next_button.html' %}
+{% endblock user_answered_correct %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class='container'>
+    <div class='container'>
+        <img class='image-green' src="{% static 'images/USA-States-Maps/PNG/'|add:current_state.name|add:'.png' %}" alt="">
+    </div>
+    <br>
+    {% include 'game_modes/partials/score.html' %}
+    <div class="container center">
+        <form action="{% url 'game_extreme_answer' game_mode %}" class='sign-up teal-text text-darken-3' method="post">
+            {% csrf_token %}
+            {{state_form.as_p}}
+            <div class='center'>
+                <button type='submit' class='btn teal darken-3'>Submit Answers</button>
+            </div>
+        </form>
+    </div>
+    <br>
+    <div class="progress container">
+      <div class="determinate" style="width:{{progress}}%"></div>
+    </div>
+    <br>
+</div>
+{% endblock content %}
+
