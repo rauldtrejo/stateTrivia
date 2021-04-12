@@ -1,7 +1,7 @@
 # State Trivia!
 State Trivia! Is a flashcard style quiz game that is intended to help students or anybody memorize state capitals and mottos. 
-Based on Material Design and minimalist gameplay, this app sets out to be easy to play, intuitive, and help users memorize state capitals and mottos. 
-The goal of the app is also to be a quick experience that a user can play when they have a couple of free minutes, making it a great companion on commutes, waiting in line, or when biological needs call.
+Based on Material Design and minimalist gameplay, this app sets out to be easy to play, intuitive, and help users memorize state capitals and mottos quicker. 
+The goal of the app is also to be a quick experience that a user can play anytime they have a couple of free minutes, making it a great companion on commutes, waiting in line, or when nature calls.
 
 # Technologies
 
