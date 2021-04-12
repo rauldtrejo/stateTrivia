@@ -28,7 +28,7 @@
                         <li><a href="/">Home</a></li>
                         <li><a href="">About</a></li>
                         <li><a href=" {% url 'profile_page' %} ">Profile</a></li>
-                        <li><a href="">High Scores</a></li>
+                        <li><a href="{% url 'highscores' %}">High Scores</a></li>
                         <li><a href="{% url 'logout' %}">Log Out</a></li>
                     {% else %}
                         <li><a href="/">Home</a></li>
