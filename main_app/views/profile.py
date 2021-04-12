@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 from main_app.forms import UsernameForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
+from main_app.models import Score, TotalScore
 
 
 def profile_page(request):
@@ -31,3 +32,19 @@ def delete_account(request):
     user = User.objects.get(username = request.user.username)
     user.delete()         
     return redirect('home')
+
+def user_score(request, game_mode):
+    score = Score.objects.filter(user = request.user, game_mode = game_mode)
+    total_score, created = TotalScore.objects.get_or_create(
+        user = request.user,
+        game_mode = game_mode,
+        defaults={
+            'total_score':0,
+        }
+    )
+    context = {
+        'score':score,
+        'game_mode': game_mode,
+        'total_score': total_score,
+    }
+    return render(request, 'scores/user_score.html', context)
