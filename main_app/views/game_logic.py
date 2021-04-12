@@ -49,10 +49,22 @@ def game(request, game_mode):
         elif(game_mode == 'extreme'):
             return render (request, 'game_modes/extreme/extreme.html', context)
     else:
-        user_progress.correct = 0
-        user_progress.incorrect = 0
-        user_progress.save()
-        return redirect('home')
+        return redirect('game_completed', game_mode = game_mode)
+
+def new_game(request, game_mode):
+    user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)
+    user_progress.correct = 0
+    user_progress.incorrect = 0
+    user_progress.save()
+    return redirect('game', game_mode = game_mode)
+
+def game_completed(request, game_mode):
+    user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)
+    context = {
+        'user_progress':user_progress,
+        'game_mode': game_mode,
+    }
+    return render(request , 'game_modes/partials/game_completed.html', context)
 
 
 def correct_answer(request, game_mode):
