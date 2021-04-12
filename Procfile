@@ -1,1 +1,1 @@
-web: statetrivia_project.wsgi
+web: gunicorn statetrivia_project.wsgi
