@@ -5,8 +5,6 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User
 
 
-
-
 def profile_page(request):
     username_form = UsernameForm()
     password_form = PasswordChangeForm(user=request.user)
