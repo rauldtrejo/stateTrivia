@@ -2,8 +2,8 @@
     {% if user.is_authenticated %}
         <li><a class='teal-text text-darken-3' href="/">Home</a></li>
         <li><a class='teal-text text-darken-3' href="">About</a></li>
-        <li><a class='teal-text text-darken-3' href=" {% url 'profile_page' %} ">Your Profile</a></li>
-        <li><a class='teal-text text-darken-3' href="">High Scores</a></li>
+        <li><a class='teal-text text-darken-3' href="{% url 'profile_page' %}">Your Profile</a></li>
+        <li><a class='teal-text text-darken-3' href="{% url 'highscores' %}">High Scores</a></li>
         <li><a class='teal-text text-darken-3' href="{% url 'logout' %}">Log Out</a></li>
     {% else %}
         <li><a class='teal-text text-darken-3' href="/">Home</a></li>
