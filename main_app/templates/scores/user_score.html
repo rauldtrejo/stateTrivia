@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class='container center teal-text text-darken-3'>
+    <h4>{{game_mode|title}}</h4>
+    <h5>Total Score: {{total_score.total_score}}</h5>
+    <h5>Your Scores:</h5>
+    <h6>1 Correct Answer = 100pts</h6>
+    <h6>1 incorrect Answer = -100pts</h6>
+    {% if score %}
+            <table class='striped'>
+                <thead>
+                <tr>
+                    <th>State</th>
+                    <th>Correct</th>
+                    <th>Incorrect</th>
+                    <th>Score</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for score in score %}
+                        <tr>
+                            <td>{{score.state}}</td>
+                            <td>{{score.correct}}</td>
+                            <td>{{score.incorrect}}</td>
+                            <td>{{score.total_points}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    {% else %}
+    <br>
+    <br>
+    <h6>You haven't played any games yet, come back when you have played a couple of rounds.</h6>
+    {% endif %}
+    </div>
+{% endblock content %}
