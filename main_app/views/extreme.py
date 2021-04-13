@@ -5,6 +5,14 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+
+# The Answer view is executed when a user submits an answer during the extreme game mode
+# It fetches the user progress for extreme mode from the database and uses it to establish
+# the state_id of the current state.
+# Then it fetches the user score for that individual state, and also the users total score 
+# for the game mode. It then compares the answeres subimitted in the form to the current state
+# object to verify that all 3 answers are correct or incorrect and will add or substract points to the user.
+# After that it redirects to the correct_answer_page view, which renders the correct answer page.
 @login_required
 def answer(request, game_mode):
   user_progress = Progress.objects.get(

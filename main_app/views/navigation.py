@@ -3,6 +3,11 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
+# This view renders the homepage. It also creates user progress objects in the database
+# for each game type, which avoids bugs if the user has no progress because he hasn't played yet.
+# The user progress variables also serve to check if a user has a previous game started
+# The home page has if statements that will check the value of this progress and ask the user if
+# they wish to resume the previos game or start a new one.
 def home(request):
   if request.user.is_authenticated :
     user_progress_capitals, created = Progress.objects.get_or_create(
@@ -29,6 +34,7 @@ def home(request):
   else:
     return render(request, 'landingPage.html')
 
+# This view renders the sign up page, and handles the creation of a new user.
 def signup(request):
   error_message = ''
   if request.method == 'POST':
@@ -43,6 +49,8 @@ def signup(request):
   context = {'form': form, 'error_message': error_message}
   return render(request, 'registration/signup.html', context)
 
+# This view renders the highscores page, the if statements check if there is more than 10 scores
+# for any game mode and will only pick the top 10. If there is less than 10, it will grab all scores.
 
 def highscores(request):
     capitals_scores = TotalScore.objects.filter(game_mode = 'capitals')

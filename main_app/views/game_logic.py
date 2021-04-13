@@ -4,7 +4,15 @@ from main_app.forms import StateForm
 from random import shuffle
 from django.contrib.auth.decorators import login_required
 
-# Create your views here.
+
+# The game view is the one responsible for the core gameplay of all 3 game modes
+# It retrieves all the variables and objects needed for the game_logic html to function
+# And works for all 3 game modes by accepting a game_mode parameter.
+# To get shuffled answers for capitals and mottos game mode, first the code gets all states
+# runs a for loop and appends all state objects to shuffle array, and shuffles them.
+# Then it appends the current state correct answer into answer array, and runs a for loop
+# that appends only 2 of the shuffled state objects into the answer array, and shuffles the answer array.
+# the answer array gets passed on to the context object, and the proper game type html is loaded.
 @login_required
 def game(request, game_mode):
     user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)
@@ -51,6 +59,8 @@ def game(request, game_mode):
     else:
         return redirect('game_completed', game_mode = game_mode)
 
+# This view is executed when a user decides to start a new game, either at the resume game modal
+# or at the game completed screen.
 @login_required
 def new_game(request, game_mode):
     user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)
@@ -59,6 +69,7 @@ def new_game(request, game_mode):
     user_progress.save()
     return redirect('game', game_mode = game_mode)
 
+# This view renders the game completed page that shows when a user answers all 50 states.
 @login_required
 def game_completed(request, game_mode):
     user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)
@@ -68,6 +79,9 @@ def game_completed(request, game_mode):
     }
     return render(request , 'game_modes/partials/game_completed.html', context)
 
+# This view is executed when the user selects the correct answer in the Know the capital
+# or know the motto game modes. It increments the correct answer counters in the user score
+# models and redirects to the correct answer page view.
 @login_required
 def correct_answer(request, game_mode):
     user_progress = Progress.objects.get(
@@ -102,6 +116,7 @@ def correct_answer(request, game_mode):
     user_total_score.save()
     return redirect('correct_answer_page', game_mode = game_mode)
 
+# This view renders the correct answer page of any given game mode by using a game mode parameter.
 @login_required
 def correct_answer_page(request, game_mode):
     user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)
@@ -123,6 +138,9 @@ def correct_answer_page(request, game_mode):
     elif(game_mode == 'extreme'):
         return render (request, 'game_modes/extreme/extreme_correct.html', context)
 
+# This view is the inverse of correct answer, it runs when a user selects the incorrect answer
+# It will increment the incorrect answer counters in the user total score and progress models.
+# It then redirects to the incorrect answer page view.
 @login_required
 def incorrect_answer(request, game_mode):
     user_progress = Progress.objects.get(
@@ -157,6 +175,7 @@ def incorrect_answer(request, game_mode):
     user_total_score.save()
     return redirect('incorrect_answer_page', game_mode = game_mode)
 
+# This view renders the incorrect answer page of any game mode by using a game mode parameter.
 @login_required
 def incorrect_answer_page(request, game_mode):
     user_progress = Progress.objects.get(user = request.user, game_mode = game_mode)

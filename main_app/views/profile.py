@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from main_app.models import Score, TotalScore
 from django.contrib.auth.decorators import login_required
 
+# This view renders the profile page
 @login_required
 def profile_page(request):
     username_form = UsernameForm()
@@ -17,6 +18,7 @@ def profile_page(request):
     }
     return render(request, 'profile.html', context)
 
+# This view allows the user to edit their username
 @login_required
 def edit_username(request):
     username_form = UsernameForm(request.POST, instance=request.user)
@@ -24,6 +26,7 @@ def edit_username(request):
         username_form.save()
         return redirect ('profile_page')
 
+# This view allows the user to edit their password
 @login_required
 def edit_password(request):
     password_form = PasswordChangeForm(user=request.user, data=request.POST)
@@ -32,12 +35,14 @@ def edit_password(request):
         update_session_auth_hash(request, password_form.user)
         return redirect ('profile_page')
 
+# This view allows the user to delete their account.
 @login_required
 def delete_account(request):
     user = User.objects.get(username = request.user.username)
     user.delete()         
     return redirect('home')
 
+# This view renders the score page for each game mode by using a game_mode parameter
 @login_required
 def user_score(request, game_mode):
     score = Score.objects.filter(user = request.user, game_mode = game_mode)
