@@ -3,6 +3,11 @@ State Trivia! Is a flashcard style quiz game that is intended to help students o
 Based on Material Design and minimalist gameplay, this app sets out to be easy to play, intuitive, and help users memorize state capitals and mottos quicker. 
 The goal of the app is also to be a quick experience that a user can play anytime they have a couple of free minutes, making it a great companion on commutes, waiting in line, or when nature calls.
 
+# Screenshots
+![alt text](https://github.com/rauldtrejo/stateTrivia/blob/main/main_app/static/images/screenshots1.PNG?raw=true)
+![alt text](https://github.com/rauldtrejo/stateTrivia/blob/main/main_app/static/images/screenshots2.PNG?raw=true)
+
+
 # Technologies
 
 * Django
@@ -60,6 +65,16 @@ You should now be able to run the project locally by using the command ```python
 # Mock Up / Wireframes
 
 [Click This Link to View the Interactive Adobe XD mock up on your browser](https://xd.adobe.com/view/8433e3eb-0b53-4677-b733-88eca7fca1e5-d160/?fullscreen "Title").
+
+Mock up created using Adobe XD.
+![alt text](https://github.com/rauldtrejo/stateTrivia/blob/main/main_app/static/images/State%20Trivia%20Mock%20Up.PNG?raw=true)
+Adobe XD prototyping.
+![alt text](https://github.com/rauldtrejo/stateTrivia/blob/main/main_app/static/images/State%20Trivia%20Mock%20Up%20Prototyping.PNG?raw=true)
+
+#ERD 
+
+![alt text](https://github.com/rauldtrejo/stateTrivia/blob/main/main_app/static/images/erd.PNG?raw=true)
+
 
 # Major Hurdles
 The game logic was originally intended to be written in Javascript, and it would do DOM manipulation to update page components in a similar fashion to a React app. This ended overcomplictating the code, and did not make use of Django or Pythons strengths. I opted to use a mixture of python and the Django templating language to create the game logic. 
