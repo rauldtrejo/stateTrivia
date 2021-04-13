@@ -71,7 +71,7 @@ Mock up created using Adobe XD.
 Adobe XD prototyping.
 ![alt text](https://github.com/rauldtrejo/stateTrivia/blob/main/main_app/static/images/State%20Trivia%20Mock%20Up%20Prototyping.PNG?raw=true)
 
-#ERD 
+# ERD 
 
 ![alt text](https://github.com/rauldtrejo/stateTrivia/blob/main/main_app/static/images/erd.PNG?raw=true)
 
